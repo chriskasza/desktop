@@ -87,6 +87,7 @@ source $ZSH/oh-my-zsh.sh
 alias mysql-rxs="mysql -uroot -phummingbird --socket=/tmp/mysql.sock -A rxsecurity_webapp_development"
 alias git-root='cd $(git rev-parse --show-cdup)'
 alias rspec='rspec --color --format documentation'
+alias ss='usr/bin/ag'
 
 unsetopt share_history
 
