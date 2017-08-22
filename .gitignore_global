@@ -2,7 +2,8 @@
 
 # text editor temp files #
 ##########################
-*.swp *.swo
+*.swp
+*.swo
 
 # Compiled source #
 ###################
