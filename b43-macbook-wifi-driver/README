@@ -1,0 +1,3 @@
+sudo mkdir /lib/firmware/b43
+sudo cp desktop/b43/*  /lib/firmware/b43
+sudo modprobe -r b43 && sudo modprobe b43
