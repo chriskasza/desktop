@@ -133,3 +133,7 @@ SECRET_KEY_BASE="11f633f17386215f30726b264fa3120f419b07d189616bf192461c1be4d6123
 # stripe keys for stripe-test project
 export STRIPE_PUBLISHABLE_KEY="pk_test_HLhPlTwyP0nB7TI00ruinova"
 export STRIPE_SECRET_KEY="sk_test_H9iAu5Dgvt9Mn511eeur7F4P"
+
+# default editor
+export VISUAL=vim
+export EDITOR="$VISUAL"
