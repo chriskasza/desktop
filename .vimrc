@@ -42,9 +42,11 @@ Plugin 'slim-template/vim-slim.git'
 " C magic
 Plugin 'c.vim'
 " base16 colortheme
-Plugin 'chriskempson/base16-vim'
-" tmux highlighting
+"Plugin 'chriskempson/base16-vim'
+" highlighting for tmux.conf file
 Plugin 'tmux-plugins/vim-tmux'
+" vue.js single file components (multi-language) highlighting
+Plugin 'posva/vim-vue'
 
 
 " All of your Plugins must be added before the following line
@@ -82,7 +84,8 @@ set number                   " line numbers
 
 set incsearch                " incremental searching
 set ignorecase               " case insensitive searching
-set hlsearch                 " highlight searches
+set smartcase                " intelligent casing for searches
+"set hlsearch                 " highlight searches
 
 set history=50               " keep 50 lines of command line history
 set autoread                 " auto read when file is changed from outside
