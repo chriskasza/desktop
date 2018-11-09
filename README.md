@@ -19,3 +19,6 @@ apt install -y tmux
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 - open tmux and run `CTRL-A I`
+
+## Install VS Code
+https://code.visualstudio.com/docs/setup/linux
