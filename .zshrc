@@ -1,26 +1,35 @@
-# Install rbenv
-# git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-
-# Install OhMyZsh
-# sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH="$HOME/.rbenv/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+export ZSH="/home/kasza/.oh-my-zsh"
 
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
+# rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="gnzh"
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
@@ -48,17 +57,23 @@ ZSH_THEME="gnzh"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git bundler rake ruby rails ubuntu)
+plugins=(
+  git rails
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -90,49 +105,10 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias mysql-rxs="mysql -uroot -phummingbird --socket=/tmp/mysql.sock -A rxsecurity_webapp_development"
-alias git-root='cd $(git rev-parse --show-cdup)'
-alias rspec='rspec --color --format documentation'
-alias ss='usr/bin/ag'
 
+# separate history for each terminal
+setopt no_share_history
 unsetopt share_history
-
-# colors
-#if [ "$TERM" = "linux" ]; then
-#  echo -en "\e]P0232323" #black
-#  echo -en "\e]P82B2B2B" #darkgrey
-#  echo -en "\e]P1D75F5F" #darkred
-#  echo -en "\e]P9E33636" #red
-#  echo -en "\e]P287AF5F" #darkgreen
-#  echo -en "\e]PA98E34D" #green
-#  echo -en "\e]P3D7AF87" #brown
-#  echo -en "\e]PBFFD75F" #yellow
-#  echo -en "\e]P48787AF" #darkblue
-#  echo -en "\e]PC7373C9" #blue
-#  echo -en "\e]P5BD53A5" #darkmagenta
-#  echo -en "\e]PDD633B2" #magenta
-#  echo -en "\e]P65FAFAF" #darkcyan
-#  echo -en "\e]PE44C9C9" #cyan
-#  echo -en "\e]P7E5E5E5" #lightgrey
-#  echo -en "\e]PFFFFFFF" #white
-#  clear #for background artifacting
-#fi
-
-BASE16_SHELL=$HOME/.config/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
-
-# initialize rbenv
-eval "$(rbenv init -)"
-
-# python virtualenv
-#. /usr/local/bin/virtualenvwrapper.sh
-
-# rails production secret
-SECRET_KEY_BASE="11f633f17386215f30726b264fa3120f419b07d189616bf192461c1be4d6123f637e8825545141d243869c4b23b6be064ddf7d9a8bba00e23636e2781f22d016"
-
-# stripe keys for stripe-test project
-export STRIPE_PUBLISHABLE_KEY="pk_test_HLhPlTwyP0nB7TI00ruinova"
-export STRIPE_SECRET_KEY="sk_test_H9iAu5Dgvt9Mn511eeur7F4P"
 
 # default editor
 export VISUAL=vim
