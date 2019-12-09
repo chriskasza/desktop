@@ -4,19 +4,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH="/home/kasza/.oh-my-zsh"
 
-# rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
-# pyenv
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-# nodenv
-export PATH="$HOME/.nodenv/bin:$PATH"
-eval "$(nodenv init -)"
-
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -73,10 +60,10 @@ ZSH_THEME="gnzh"
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
+# Example format: plugins=(git rails django yarn)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git rails django yarn
+  git
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -110,6 +97,19 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# rbenv
+# export PATH="$HOME/.rbenv/bin:$PATH"
+# eval "$(rbenv init -)"
+
+# pyenv
+# export PATH="$HOME/.pyenv/bin:$PATH"
+# eval "$(pyenv init -)"
+# eval "$(pyenv virtualenv-init -)"
+
+# nodenv
+# export PATH="$HOME/.nodenv/bin:$PATH"
+# eval "$(nodenv init -)"
+
 # separate history for each terminal
 setopt no_share_history
 unsetopt share_history
@@ -117,3 +117,14 @@ unsetopt share_history
 # default editor
 export VISUAL=vim
 export EDITOR="$VISUAL"
+
+# start powerline
+if [ -f `which powerline-daemon` ]; then
+  powerline-daemon -q
+  # . /usr/share/powerline/bindings/zsh/powerline.zsh
+fi
+
+# start tmux
+if [ -z "$TMUX" ]; then
+  tmux attach -t default || tmux new -s default
+fi
