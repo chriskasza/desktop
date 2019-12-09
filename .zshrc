@@ -8,7 +8,8 @@ export ZSH="/home/kasza/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="gnzh"
+#ZSH_THEME="gnzh"
+ZSH_THEME="powerlevel9k/powerlevel9k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -60,10 +61,10 @@ ZSH_THEME="gnzh"
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(git rails django yarn)
+# Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
+  git docker docker-compose
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -125,6 +126,6 @@ if [ -f `which powerline-daemon` ]; then
 fi
 
 # start tmux
-if [ -z "$TMUX" ]; then
-  tmux attach -t default || tmux new -s default
-fi
+#if [ -z "$TMUX" ]; then
+#  tmux attach -t default || tmux new -s default
+#fi
