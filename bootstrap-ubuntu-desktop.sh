@@ -19,7 +19,6 @@ sudo apt install -y \
     tmux \
     vim \
     zsh
-sudo snap install --classic code slack
 
 #####
 # Install nerd-fonts and powerlevel10k
