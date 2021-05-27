@@ -9,7 +9,9 @@ export ZSH="/home/kasza/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="gnzh"
-ZSH_THEME="powerlevel9k/powerlevel9k"
+
+# https://github.com/romkatv/powerlevel10k#get-started
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -119,11 +121,11 @@ unsetopt share_history
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
-# start powerline
-if [ -f `which powerline-daemon` ]; then
-  powerline-daemon -q
-  # . /usr/share/powerline/bindings/zsh/powerline.zsh
-fi
+# # start powerline
+# if [ -f `which powerline-daemon` ]; then
+#   powerline-daemon -q
+#   # . /usr/share/powerline/bindings/zsh/powerline.zsh
+# fi
 
 # start tmux
 #if [ -z "$TMUX" ]; then
