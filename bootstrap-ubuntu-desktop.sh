@@ -2,43 +2,57 @@
 set -ex
 
 sudo apt update
-sudo apt install -y \
+
+# Docker dependencies
+sudo apt install \
     apt-transport-https \
     ca-certificates \
-    software-properties-common
+    curl \
+    gnupg \
+    lsb-release
 sudo apt upgrade -y
+
+# Preferred tools
 sudo apt install -y \
-    fonts-powerline \
     gnome-tweak-tool \
     gnupg-agent \
-    powerline \
     tmux \
     vim \
     zsh
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-# sudo add-apt-repository \
-#    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-#    $(lsb_release -cs) \
-#    stable"
-sudo add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   disco \
-   stable"
+sudo snap install --classic code slack
+
+#####
+# Install nerd-fonts and powerlevel10k
+#####
+git clone --depth=1 https://github.com/ryanoasis/nerd-fonts.git $HOME/.nerd-fonts
+$HOME/.nerd-fonts/install.sh Meslo
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
+#####
+# Install docker
+#####
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+echo \
+  "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt update
-sudo apt install -y docker-ce
+sudo apt install docker-ce docker-ce-cli containerd.io
 sudo usermod -aG docker $USER
 sudo systemctl enable docker
-sudo curl -L \
-    "https://github.com/docker/compose/releases/download/1.25.0/docker-compose-$(uname -s)-$(uname -m)" \
-    -o /usr/local/bin/docker-compose
+
+#####
+# Install docker-compose
+#####
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
-sudo snap install chromium chromium-ffmpeg
-sudo snap install --classic code slack
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+
+#####
+# Download .dot files
+#####
 wget https://raw.githubusercontent.com/chriskasza/desktop/master/.tmux.conf
 wget https://raw.githubusercontent.com/chriskasza/desktop/master/.zshrc
+wget https://raw.githubusercontent.com/chriskasza/desktop/master/.p10k.zsh
 
 echo Start tmux and issue command, CTRL+a I
 
