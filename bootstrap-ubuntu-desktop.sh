@@ -47,6 +47,11 @@ sudo chmod +x /usr/local/bin/docker-compose
 sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
 #####
+# Create SSH key
+#####
+ssh-keygen -b 2048 -t rsa -f $HOME/.ssh -q -N ""
+
+#####
 # Download .dot files
 #####
 wget https://raw.githubusercontent.com/chriskasza/desktop/master/.tmux.conf
