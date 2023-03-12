@@ -28,9 +28,10 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 #####
 # Install nerd-fonts and powerlevel10k
 #####
-git clone --depth=1 https://github.com/ryanoasis/nerd-fonts.git $HOME/.nerd-fonts
-$HOME/.nerd-fonts/install.sh Meslo
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+https://github.com/romkatv/powerlevel10k#meslo-nerd-font-patched-for-powerlevel10k
+~~git clone --depth=1 https://github.com/ryanoasis/nerd-fonts.git $HOME/.nerd-fonts~~
+~~$HOME/.nerd-fonts/install.sh Meslo~~
+~~git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k~~
 
 #####
 # Install docker
